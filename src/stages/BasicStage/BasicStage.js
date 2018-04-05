@@ -1,8 +1,11 @@
 import React from "react";
 import ClickHere from "./ClickHere";
-import { Title } from "../common";
 
 export default class BasicStage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   stageComplete = () => {
     console.log("Stage 1 completed!");
   };
@@ -11,8 +14,7 @@ export default class BasicStage extends React.Component {
     const stageName = "Stage 1";
     return (
       <div>
-        <Title text={stageName} />
-        <ClickHere stageComplete={this.stageComplete} />
+        <ClickHere handleClick={this.props.completeStage()} />
       </div>
     );
   }
