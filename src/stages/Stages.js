@@ -1,21 +1,23 @@
 import React from "react";
 import BasicStage from "./BasicStage";
 import VerticalStage from "./VerticalStage";
+import HorizontalStage from "./HorizontalStage";
 import { Title } from "./common";
 
 export default class Stages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stageIndex: 2
+      stageIndex: 1
     };
   }
 
   getStages() {
     return [
-      <h1> No stage </h1>,
+      <h1>GAME OVER</h1>,
       <BasicStage completeStage={() => this.nextStage} />,
-      <VerticalStage completeStage={() => this.previousStage} />
+      <VerticalStage completeStage={() => this.nextStage} />,
+      <HorizontalStage completeStage={() => this.nextStage} />
     ];
   }
 

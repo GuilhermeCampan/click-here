@@ -1,6 +1,6 @@
 .vertical-travelling-wrapper {
   margin: 0 auto;
-  animation: vertical-move 2s infinite alternate;
+  animation: vertical-move 1s infinite alternate;
 }
 
 @keyframes vertical-move {
