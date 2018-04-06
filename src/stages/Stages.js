@@ -1,4 +1,5 @@
 import React from "react";
+import GameOver from "./GameOver/GameOver";
 import BasicStage from "./BasicStage/BasicStage";
 import VerticalStage from "./VerticalStage/VerticalStage";
 import HorizontalStage from "./HorizontalStage/HorizontalStage";
@@ -14,7 +15,7 @@ export default class Stages extends React.Component {
 
   getStages() {
     return [
-      <h1>GAME OVER</h1>,
+      <GameOver restartGame={() => this.restartGame} />,
       <BasicStage completeStage={() => this.nextStage} />,
       <VerticalStage completeStage={() => this.nextStage} />,
       <HorizontalStage completeStage={() => this.nextStage} />
@@ -32,6 +33,10 @@ export default class Stages extends React.Component {
 
   previousStage = () => {
     this.changeStageIndex(-1);
+  };
+
+  restartGame = () => {
+    this.setState({stageIndex: 1});
   };
 
   changeStageIndex(modifer) {
