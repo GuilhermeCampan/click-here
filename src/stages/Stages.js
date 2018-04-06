@@ -1,7 +1,7 @@
 import React from "react";
-import BasicStage from "./BasicStage";
-import VerticalStage from "./VerticalStage";
-import HorizontalStage from "./HorizontalStage";
+import BasicStage from "./BasicStage/BasicStage";
+import VerticalStage from "./VerticalStage/VerticalStage";
+import HorizontalStage from "./HorizontalStage/HorizontalStage";
 import { Title } from "./common";
 
 export default class Stages extends React.Component {

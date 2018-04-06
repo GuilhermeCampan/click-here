@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import Stages from "./stages";
+import Stages from "./Stages/Stages";
 
 const styles = {
   fontFamily: "sans-serif",
