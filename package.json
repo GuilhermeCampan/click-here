@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://click-here-game.herokuapp.com/",
+  "license": "UNLICENSED",
+  "homepage": "https://click-here-dev.herokuapp.com/",
   "main": "src/index.js",
   "dependencies": {
     "react": "16.2.0",
@@ -11,6 +12,7 @@
     "react-scripts": "1.1.0"
   },
   "devDependencies": {
+    "@storybook/react": "^3.4.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
@@ -28,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "mocha --require ignore-styles --require babel-polyfill --require babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   }
 }
