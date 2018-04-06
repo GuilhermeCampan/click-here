@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import ClickHere from "./ClickHere";
+import { expect } from 'chai';
 
 describe("<ClickHere>", () => {
   it("should call handleClick", () => {
@@ -10,6 +11,6 @@ describe("<ClickHere>", () => {
     };
     const wrapper = shallow(<ClickHere handleClick={handleClick} />);
     wrapper.find("button").simulate("click");
-    expect(clicked).toEqual(true);
+    expect(clicked).equal(true);
   });
 });
