@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { BasicStage } from "./stages";
+import Stages from "./stages";
 
 const styles = {
   fontFamily: "sans-serif",
@@ -9,7 +9,7 @@ const styles = {
 
 const App = () => (
   <div style={styles}>
-    <BasicStage />
+    <Stages />
   </div>
 );
 

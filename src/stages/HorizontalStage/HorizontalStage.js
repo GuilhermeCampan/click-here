@@ -1,10 +1,11 @@
 import React from "react";
 import { ClickHere } from "../common";
+import "./HorizontalStage.css";
 
-export default class BasicStage extends React.Component {
+export default class HorizontalStage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="horizontal-travelling-wrapper">
         <ClickHere handleClick={this.props.completeStage()} />
       </div>
     );
