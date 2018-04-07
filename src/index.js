@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import Stages from "./stages/Stages";
+import "./styles/styleguide.css";
 
 const appStyle = {
   fontFamily: "sans-serif",

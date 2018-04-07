@@ -7,9 +7,9 @@
 
 @keyframes horizontal-move {
   from {
-    transform: translateX(-300px);
+    transform: translateX(-150px);
   }
   to {
-    transform: translateX(300px);
+    transform: translateX(150px);
   }
 }
