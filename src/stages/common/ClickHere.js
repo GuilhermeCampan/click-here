@@ -2,10 +2,11 @@ import React from "react";
 
 const styles = {
   width: "150px",
-  height: "100px",
-  background: "teal",
+  height: "60px",
+  background: "#673AB7",
   color: "white",
-  fontSize: "20px"
+  fontSize: "20px",
+  borderRadius: "10px"
 };
 
 const ClickHere = props => {

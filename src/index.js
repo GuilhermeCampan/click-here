@@ -2,13 +2,14 @@ import React from "react";
 import { render } from "react-dom";
 import Stages from "./stages/Stages";
 
-const styles = {
+const appStyle = {
   fontFamily: "sans-serif",
-  textAlign: "center"
+  textAlign: "center",
+  color: "white"
 };
 
 const App = () => (
-  <div style={styles}>
+  <div style={appStyle}>
     <Stages />
   </div>
 );
