@@ -8,6 +8,6 @@
     transform: translateY(0);
   }
   to {
-    transform: translateY(50vh);
+    transform: translateY(300px);
   }
 }

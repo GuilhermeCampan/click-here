@@ -1,13 +1,15 @@
 .horizontal-travelling-wrapper {
   margin: 0 auto;
+  width: 300px;
+  text-align: center;  
   animation: horizontal-move 1s infinite alternate;
 }
 
 @keyframes horizontal-move {
   from {
-    transform: translateX(0);
+    transform: translateX(-150px);
   }
   to {
-    transform: translateX(50vw);
+    transform: translateX(150px);
   }
 }
