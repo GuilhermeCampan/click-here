@@ -1,4 +1,5 @@
 import { configure } from '@storybook/react';
+import '../src/styles/styleguide.css';
 
 function loadStories() {
   require('../stories/index.js');
