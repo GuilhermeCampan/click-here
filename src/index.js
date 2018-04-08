@@ -3,14 +3,8 @@ import { render } from "react-dom";
 import Stages from "./stages/Stages";
 import "./styles/styleguide.css";
 
-const appStyle = {
-  fontFamily: "sans-serif",
-  textAlign: "center",
-  color: "white"
-};
-
 const App = () => (
-  <div style={appStyle}>
+  <div className="app-content">
     <Stages />
   </div>
 );
