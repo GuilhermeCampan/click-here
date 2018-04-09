@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ClickHere } from '../common';
 
-const BasicStage = ({ completeStage }) => (
+const BasicStage = ({ nextStage }) => (
   <div>
-    <ClickHere handleClick={completeStage()} />
+    <ClickHere handleClick={nextStage()} />
   </div>
 );
 
 BasicStage.propTypes = {
-  completeStage: PropTypes.func
+  nextStage: PropTypes.func
 };
 
 export default BasicStage;

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { ClickHere } from '../common';
 import './VerticalStage.css';
 
-const VerticalStage = ({ completeStage }) => (
+const VerticalStage = ({ nextStage }) => (
   <div className="vertical-travelling-wrapper">
-    <ClickHere handleClick={completeStage()} />
+    <ClickHere handleClick={nextStage()} />
   </div>
 );
 
 VerticalStage.propTypes = {
-  completeStage: PropTypes.func
+  nextStage: PropTypes.func
 };
 
 export default VerticalStage;

@@ -6,7 +6,7 @@ import VerticalStage from './VerticalStage';
 describe('<VerticalStage>', () => {
   let wrapper;
   let mockProps = {
-    completeStage: fn => fn
+    nextStage: fn => fn
   };
 
   beforeEach(() => {

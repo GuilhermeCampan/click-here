@@ -14,7 +14,7 @@ describe('<Stages>', () => {
 
   it('should get the list of stages', () => {
     const minimumNumberStages = 2;
-    expect(wrapperInstance.getStages().length).to.be.at.least(
+    expect(wrapperInstance.stages.length).to.be.at.least(
       minimumNumberStages
     );
   });

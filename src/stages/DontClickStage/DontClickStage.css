@@ -1,0 +1,4 @@
+.dont-click-stage {
+  display: flex;
+  justify-content: space-evenly;
+}
