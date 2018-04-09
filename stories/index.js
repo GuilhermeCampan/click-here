@@ -7,6 +7,7 @@ import BasicStage  from '../src/stages/BasicStage/BasicStage';
 import VerticalStage  from '../src/stages/VerticalStage/VerticalStage';
 import HorizontalStage  from '../src/stages/HorizontalStage/HorizontalStage';
 import DontClickStage  from '../src/stages/DontClickStage/DontClickStage';
+import MultipleClickStage  from '../src/stages/MultipleClickStage/MultipleClickStage';
 import GameOver  from '../src/stages/GameOver/GameOver';
 
 const stageControlsActions = {
@@ -38,6 +39,9 @@ storiesOf('Stages', module)
   ))
   .add('DontClickStage', () => (
     <DontClickStage {...stageControlsActions}/>
+  ))
+  .add('MultipleClickStage', () => (
+    <MultipleClickStage {...stageControlsActions}/>
   ))
   .add('GameOver', () => (
     <GameOver {...stageControlsActions} />

@@ -1,0 +1,8 @@
+.multiple-click-stage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.multiple-click-stage button {
+  margin: 10px 10px;
+}
