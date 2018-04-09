@@ -1,20 +1,20 @@
-import React from "react";
-import { shallow } from "enzyme";
-import { expect } from "chai";
-import VerticalStage from "./VerticalStage";
+import React from 'react';
+import { mount } from 'enzyme';
+import { expect } from 'chai';
+import VerticalStage from './VerticalStage';
 
-describe("<VerticalStage>", () => {
+describe('<VerticalStage>', () => {
   let wrapper;
-  let wrapperInstance;
-  const mockCompleteStage = () => null;
+  let mockProps = {
+    completeStage: fn => fn
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<VerticalStage completeStage={mockCompleteStage} />);
-    wrapperInstance = wrapper.instance();
+    wrapper = mount(<VerticalStage {...mockProps} />);
   });
 
-  it("should has ClickHere", () => {
-    expect(wrapper.find("ClickHere").length).equal(1);
+  it('should has ClickHere', () => {
+    expect(!!wrapper.find('ClickHere').length).equal(true);
   });
 
 });
