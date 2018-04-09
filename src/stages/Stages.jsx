@@ -1,36 +1,27 @@
 import React from 'react';
-import GameOver from './GameOver/GameOver';
-import BasicStage from './BasicStage/BasicStage';
-import VerticalStage from './VerticalStage/VerticalStage';
-import HorizontalStage from './HorizontalStage/HorizontalStage';
 import { Title } from './common';
+import getStagesList from './stagesList';
 
 export default class Stages extends React.Component {
   constructor(props) {
     super(props);
+    this.stageControls = {
+      restartGame: () => this.restartGame,
+      nextStage: () => this.nextStage,
+      previousStage: () => this.previousStage
+    };
+    this.stages = [];
     this.state = {
       stageIndex: 1
     };
   }
 
-  getStages() {
-    const stageControls = {
-      restartGame: () => this.restartGame,
-      nextStage: () => this.nextStage,
-      previousStage: () => this.previousStage
-    };
-
-    return [
-      <GameOver key="stage0" {...stageControls} />,
-      <BasicStage key="stage1" {...stageControls} />,
-      <VerticalStage key="stage2" {...stageControls} />,
-      <HorizontalStage key="stage3" {...stageControls} />
-    ];
+  componentWillMount(){
+    this.stages = getStagesList(this.stageControls);
   }
 
   getCurrentStage = () => {
-    const stages = this.getStages();
-    return stages[this.state.stageIndex];
+    return this.stages[this.state.stageIndex];
   };
 
   nextStage = () => {
@@ -56,9 +47,8 @@ export default class Stages extends React.Component {
   }
 
   getNewStageIndex = newStageIndex => {
-    const stages = this.getStages();
     const defaultStageIndex = 0;
-    return newStageIndex >= stages.length || newStageIndex < defaultStageIndex
+    return newStageIndex >= this.stages.length || newStageIndex < defaultStageIndex
       ? defaultStageIndex
       : newStageIndex;
   };
