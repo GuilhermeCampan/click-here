@@ -2,30 +2,43 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Title, ClickHere }  from '../src/stages/common';
+import Stages from '../src/stages/Stages';
 import BasicStage  from '../src/stages/BasicStage/BasicStage';
 import VerticalStage  from '../src/stages/VerticalStage/VerticalStage';
 import HorizontalStage  from '../src/stages/HorizontalStage/HorizontalStage';
+import DontClickStage  from '../src/stages/DontClickStage/DontClickStage';
 import GameOver  from '../src/stages/GameOver/GameOver';
 
+const stageControlsActions = {
+  restartGame: () => action('restartGame'),
+  previousStage: () => action('previousStage'),
+  nextStage: () => action('nextStage')
+};
 
 storiesOf('common', module)
   .add('Title', () => (
     <Title text="Title"/>
   ))
   .add('ClickHere', () => (
-    <ClickHere handleClick={action('clicked')}/>
+    <ClickHere handleClick={action('handleClick')}/>
   ));
 
 storiesOf('Stages', module)
+  .add('All stages', () => (
+    <Stages />
+  ))
   .add('BasicStage', () => (
-    <BasicStage completeStage={() => action('clicked')} />
+    <BasicStage {...stageControlsActions} />
   ))
   .add('VerticalStage', () => (
-    <VerticalStage completeStage={() => action('clicked')} />
+    <VerticalStage {...stageControlsActions}/>
   ))
   .add('HorizontalStage', () => (
-    <HorizontalStage completeStage={() => action('clicked')} />
+    <HorizontalStage {...stageControlsActions}/>
+  ))
+  .add('DontClickStage', () => (
+    <DontClickStage {...stageControlsActions}/>
   ))
   .add('GameOver', () => (
-    <GameOver restartGame={() => action('clicked')} />
-  ))
+    <GameOver {...stageControlsActions} />
+  ));

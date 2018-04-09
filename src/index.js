@@ -1,18 +1,12 @@
-import React from "react";
-import { render } from "react-dom";
-import Stages from "./stages/Stages";
-import "./styles/styleguide.css";
-
-const appStyle = {
-  fontFamily: "sans-serif",
-  textAlign: "center",
-  color: "white"
-};
+import React from 'react';
+import { render } from 'react-dom';
+import Stages from './stages/Stages';
+import './styles/styleguide.css';
 
 const App = () => (
-  <div style={appStyle}>
+  <div className="app-content">
     <Stages />
   </div>
 );
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));
