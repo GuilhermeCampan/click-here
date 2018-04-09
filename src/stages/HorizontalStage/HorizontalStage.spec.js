@@ -6,7 +6,7 @@ import HorizontalStage from './HorizontalStage';
 describe('<HorizontalStage>', () => {
   let wrapper;
   let mockProps = {
-    completeStage: fn => fn
+    nextStage: fn => fn
   };
 
   beforeEach(() => {

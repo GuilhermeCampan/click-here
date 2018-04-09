@@ -6,7 +6,7 @@ import BasicStage from './BasicStage';
 describe('<BasicStage>', () => {
   let wrapper;
   let mockProps = {
-    completeStage: fn => fn
+    nextStage: fn => fn
   };
 
   beforeEach(() => {

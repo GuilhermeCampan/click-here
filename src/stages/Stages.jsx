@@ -16,7 +16,7 @@ export default class Stages extends React.Component {
   getStages() {
     const stageControls = {
       restartGame: () => this.restartGame,
-      completeStage: () => this.nextStage,
+      nextStage: () => this.nextStage,
       previousStage: () => this.previousStage
     };
 

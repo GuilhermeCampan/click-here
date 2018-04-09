@@ -13,4 +13,21 @@ describe('<ClickHere>', () => {
     wrapper.find('button').simulate('click');
     expect(clicked).equal(true);
   });
+
+  it('should have provided a default text', () => {
+    let props = {
+      handleClick: fn => fn
+    };
+    const wrapper = shallow(<ClickHere {...props} />);
+    expect(wrapper.text()).to.equal('Click Here!');
+  });
+
+  it('should have render the text provided', () => {
+    let props = {
+      handleClick: fn => fn,
+      buttonText: 'something'
+    };
+    const wrapper = shallow(<ClickHere {...props} />);
+    expect(wrapper.text()).to.equal(props.buttonText);
+  });
 });
