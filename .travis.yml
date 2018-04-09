@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 8
+script:
+  - npm run lint
+  - npm run coverage
+  - npm run build
+
+before_install:
+  - npm install -g npm@latest
+
+notifications:
+  email:
+    on_failure: change
+
+after_success: 'npm run coveralls'
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
