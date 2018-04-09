@@ -1,3 +1,10 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ text }) => <h2>{text}</h2>;
+const Title = ({ text }) => <h2>{text}</h2>;
+
+Title.propTypes = {
+  text: PropTypes.string
+};
+
+export default Title;

@@ -1,20 +1,20 @@
-import React from "react";
-import { shallow } from "enzyme";
-import { expect } from "chai";
-import HorizontalStage from "./HorizontalStage";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
+import HorizontalStage from './HorizontalStage';
 
-describe("<HorizontalStage>", () => {
+describe('<HorizontalStage>', () => {
   let wrapper;
-  let wrapperInstance;
-  const mockCompleteStage = () => null;
+  let mockProps = {
+    completeStage: fn => fn
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<HorizontalStage completeStage={mockCompleteStage} />);
-    wrapperInstance = wrapper.instance();
+    wrapper = shallow(<HorizontalStage {...mockProps} />);
   });
 
-  it("should has ClickHere", () => {
-    expect(wrapper.find("ClickHere").length).equal(1);
+  it('should has ClickHere', () => {
+    expect(!!wrapper.find('ClickHere').length).equal(true);
   });
 
 });

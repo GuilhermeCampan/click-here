@@ -1,20 +1,20 @@
-import React from "react";
-import { shallow } from "enzyme";
-import { expect } from "chai";
-import GameOver from "./GameOver";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
+import GameOver from './GameOver';
 
-describe("<GameOver>", () => {
+describe('<GameOver>', () => {
   let wrapper;
-  let wrapperInstance;
-  const mockRestartGame = () => null;
+  let mockProps = {
+    restartGame: fn => fn
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<GameOver restartGame={mockRestartGame} />);
-    wrapperInstance = wrapper.instance();
+    wrapper = shallow(<GameOver {...mockProps} />);
   });
 
-  it("should has ClickHere", () => {
-    expect(wrapper.find("ClickHere").length).equal(1);
+  it('should has ClickHere', () => {
+    expect(!!wrapper.find('ClickHere').length).equal(true);
   });
 
 });
