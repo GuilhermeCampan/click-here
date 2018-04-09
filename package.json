@@ -38,10 +38,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "mocha -r jsdom-global/register --require babel-core/register --require ignore-styles --require babel-polyfill --require babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
-    "coverage": "nyc --reporter=html --reporter=text npm test",
+    "coverage": "nyc --reporter=html --reporter=text --reporter=lcov npm test",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "lint": "esw src --color",
-    "lint:watch": "npm run lint -- --watch",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject"
   },
   "nyc": {
