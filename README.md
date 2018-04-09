@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GuilhermeCampano/click-here.svg?branch=master)](https://travis-ci.org/GuilhermeCampano/click-here)
+[![Build Status](https://travis-ci.org/GuilhermeCampano/click-here.svg?branch=master)](https://travis-ci.org/GuilhermeCampano/click-here)[![Coverage Status](https://coveralls.io/repos/github/GuilhermeCampano/click-here/badge.svg?branch=master)](https://coveralls.io/github/GuilhermeCampano/click-here?branch=master)
 
 # click-here
 Just a silly game
