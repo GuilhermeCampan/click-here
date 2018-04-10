@@ -16,7 +16,7 @@ export default class Stages extends React.Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.stages = getStagesList(this.stageControls);
   }
 
@@ -35,7 +35,7 @@ export default class Stages extends React.Component {
   };
 
   restartGame = () => {
-    this.setState({stageIndex: 1});
+    this.setState({ stageIndex: 1 });
   };
 
   changeStageIndex(modifer) {
@@ -49,19 +49,19 @@ export default class Stages extends React.Component {
   getNewStageIndex = newStageIndex => {
     const defaultStageIndex = 0;
     const useDefaultStage =
-      newStageIndex >= this.stages.length
-      || newStageIndex < defaultStageIndex;
+      newStageIndex >= this.stages.length || newStageIndex < defaultStageIndex;
 
-    return useDefaultStage
-      ? defaultStageIndex
-      : newStageIndex;
+    return useDefaultStage ? defaultStageIndex : newStageIndex;
   };
 
-  getTitle(){
+  getTitle() {
     const currentStageIndex = this.state.stageIndex;
     const firstStageIndex = 0;
-    const lastStageIndex = getStagesList().length -1;
-    if (currentStageIndex === firstStageIndex || currentStageIndex === lastStageIndex) {
+    const lastStageIndex = getStagesList().length - 1;
+    if (
+      currentStageIndex === firstStageIndex ||
+      currentStageIndex === lastStageIndex
+    ) {
       return;
     }
     const stageTitle = `Stage: ${currentStageIndex}`;
