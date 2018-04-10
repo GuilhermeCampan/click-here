@@ -6,7 +6,7 @@ import './MultipleClickStage.css';
 class MultipleClickStage extends React.Component {
   constructor(props) {
     super(props);
-    this.correctButtonIndex = 0;
+    this.correctButtonIndex;
     this.falseButtonTexts = [
       'click Here!', 'ClicK Here!', 'Click HerE!',
       'CLick Here!', 'Click here!', 'Click Here',
@@ -26,15 +26,15 @@ class MultipleClickStage extends React.Component {
     this.correctButtonIndex = this.getRamdomIndex();
   }
 
+  getRamdomIndex = () => Math.floor(
+    Math.random() * this.falseButtonTexts.length
+  );
+
   getButtonsList() {
     let buttonsList = this.getFalseButtons();
     buttonsList[this.correctButtonIndex] = this.getCorrectButton();
     return buttonsList;
   }
-
-  getRamdomIndex = () => Math.floor(
-    Math.random() * this.falseButtonTexts.length
-  );
 
   getCorrectButton = () =>
     <ClickHere key="correct" handleClick={this.props.nextStage()}/>;

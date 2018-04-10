@@ -22,12 +22,23 @@ describe('<ClickHere>', () => {
     expect(wrapper.text()).to.equal('Click Here!');
   });
 
-  it('should have render the text provided', () => {
+  it('should had render the text provided', () => {
     let props = {
       handleClick: fn => fn,
       buttonText: 'something'
     };
     const wrapper = shallow(<ClickHere {...props} />);
     expect(wrapper.text()).to.equal(props.buttonText);
+  });
+
+  it('should had render a disabled button', () => {
+    let props = {
+      handleClick: fn => fn,
+      classModifiers: {
+        disabled: true
+      }
+    };
+    const wrapper = shallow(<ClickHere {...props} />);
+    expect(wrapper.hasClass('click-here-button--disabled')).equal(true);
   });
 });
