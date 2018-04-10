@@ -6,7 +6,7 @@ import './MultipleClickStage.css';
 class MultipleClickStage extends React.Component {
   constructor(props) {
     super(props);
-    this.correctButtonIndex;
+    this.correctButtonIndex = null;
     this.falseButtonTexts = [
       'click Here!', 'ClicK Here!', 'Click HerE!',
       'CLick Here!', 'Click here!', 'Click Here',

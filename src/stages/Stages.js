@@ -48,7 +48,11 @@ export default class Stages extends React.Component {
 
   getNewStageIndex = newStageIndex => {
     const defaultStageIndex = 0;
-    return newStageIndex >= this.stages.length || newStageIndex < defaultStageIndex
+    const useDefaultStage =
+      newStageIndex >= this.stages.length
+      || newStageIndex < defaultStageIndex;
+
+    return useDefaultStage
       ? defaultStageIndex
       : newStageIndex;
   };
