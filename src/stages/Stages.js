@@ -57,12 +57,22 @@ export default class Stages extends React.Component {
       : newStageIndex;
   };
 
+  getTitle(){
+    const currentStageIndex = this.state.stageIndex;
+    const firstStageIndex = 0;
+    const lastStageIndex = getStagesList().length -1;
+    if (currentStageIndex === firstStageIndex || currentStageIndex === lastStageIndex) {
+      return;
+    }
+    const stageTitle = `Stage: ${currentStageIndex}`;
+    return <Title text={stageTitle} />;
+  }
+
   render() {
-    const stageTitle = `Stage: ${this.state.stageIndex}`;
     const currentStage = this.getCurrentStage();
     return (
       <div>
-        <Title text={stageTitle} />
+        {this.getTitle()}
         {currentStage}
       </div>
     );
