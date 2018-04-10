@@ -5,7 +5,7 @@ import { ClickHere, Title } from '../common';
 const GameOver = ({ restartGame }) => (
   <div>
     <Title text="Game Over"/>
-    <ClickHere handleClick={restartGame()} />
+    <ClickHere handleClick={restartGame()} buttonText="Restart!"/>
   </div>
 );
 

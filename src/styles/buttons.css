@@ -1,9 +1,15 @@
 .click-here-button {
-    width: 150px;
-    height: 60px;
-    background: #673AB7;
-    color: white;
-    font-size: 20px;
-    border-radius: 10px;
-    border: none;
+  width: 150px;
+  height: 100px;
+  background: #673AB7;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.click-here-button--disabled {
+  background: gray;
 }
