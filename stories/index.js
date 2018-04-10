@@ -5,12 +5,13 @@ import { action } from '@storybook/addon-actions';
 import { Title, ClickHere }  from '../src/stages/common';
 import Stages from '../src/stages/Stages';
 import {
+  GameOver,
   BasicStage,
   VerticalStage,
   HorizontalStage,
   DontClickStage,
   MultipleClickStage,
-  GameOver
+  EndGame
 } from '../src/stages/stagesList';
 
 const stageControlsActions = {
@@ -35,6 +36,9 @@ storiesOf('Stages', module)
   .add('All stages', () => (
     <Stages />
   ))
+  .add('GameOver', () => (
+    <GameOver {...stageControlsActions} />
+  ))
   .add('BasicStage', () => (
     <BasicStage {...stageControlsActions} />
   ))
@@ -50,6 +54,6 @@ storiesOf('Stages', module)
   .add('MultipleClickStage', () => (
     <MultipleClickStage {...stageControlsActions}/>
   ))
-  .add('GameOver', () => (
-    <GameOver {...stageControlsActions} />
+  .add('EndGame', () => (
+    <EndGame {...stageControlsActions} />
   ));
