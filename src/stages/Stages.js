@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from './common';
+import { Title } from '../common';
 import { getStagesList } from './stagesList';
 
 export default class Stages extends React.Component {

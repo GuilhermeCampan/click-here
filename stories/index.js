@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
-import { Title, ClickHere }  from '../src/stages/common';
+import { Title, ClickHere }  from '../src/common';
 import Stages from '../src/stages/Stages';
 import {
   GameOver,
