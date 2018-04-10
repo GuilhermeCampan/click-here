@@ -2,7 +2,7 @@
 
 html {
   background: url(../assets/stars.png) no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
   background-color: black;
 }
 

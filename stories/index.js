@@ -1,13 +1,17 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+
 import { action } from '@storybook/addon-actions';
 import { Title, ClickHere }  from '../src/stages/common';
 import Stages from '../src/stages/Stages';
-import BasicStage  from '../src/stages/BasicStage/BasicStage';
-import VerticalStage  from '../src/stages/VerticalStage/VerticalStage';
-import HorizontalStage  from '../src/stages/HorizontalStage/HorizontalStage';
-import DontClickStage  from '../src/stages/DontClickStage/DontClickStage';
-import GameOver  from '../src/stages/GameOver/GameOver';
+import {
+  BasicStage,
+  VerticalStage,
+  HorizontalStage,
+  DontClickStage,
+  MultipleClickStage,
+  GameOver
+} from '../src/stages/stagesList';
 
 const stageControlsActions = {
   restartGame: () => action('restartGame'),
@@ -20,7 +24,11 @@ storiesOf('common', module)
     <Title text="Title"/>
   ))
   .add('ClickHere', () => (
-    <ClickHere handleClick={action('handleClick')}/>
+    <div>
+      <ClickHere handleClick={action('handleClick')}/>
+      <ClickHere handleClick={action('handleClick')} buttonText="buttonText"/>
+      <ClickHere handleClick={action('handleClick')} buttonText="disabled" classModifiers={{disabled:true}}/>
+    </div>
   ));
 
 storiesOf('Stages', module)
@@ -38,6 +46,9 @@ storiesOf('Stages', module)
   ))
   .add('DontClickStage', () => (
     <DontClickStage {...stageControlsActions}/>
+  ))
+  .add('MultipleClickStage', () => (
+    <MultipleClickStage {...stageControlsActions}/>
   ))
   .add('GameOver', () => (
     <GameOver {...stageControlsActions} />
