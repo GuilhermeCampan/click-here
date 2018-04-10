@@ -1,7 +1,7 @@
 @import 'buttons.css';
 
 html {
-  /* background: url(../assets/stars.png) no-repeat center center fixed; */
+  background: url(../assets/stars.png) no-repeat center center fixed;
   background-size: contain;
   background-color: black;
 }

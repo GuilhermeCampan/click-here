@@ -4,6 +4,7 @@
 }
 
 .multiple-click-stage button {
-  margin: 10px;
-  width: 25%;
+  display: inline-block;
+  margin: 10px 0 0 10px;
+  flex: 1 0 150px;  
 }

@@ -1,6 +1,6 @@
 .click-here-button {
   width: 150px;
-  height: 60px;
+  height: 100px;
   background: #673AB7;
   color: white;
   font-size: 20px;
@@ -12,5 +12,4 @@
 
 .click-here-button--disabled {
   background: gray;
-  color: black;
 }
