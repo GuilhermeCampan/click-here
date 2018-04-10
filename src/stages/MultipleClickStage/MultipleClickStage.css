@@ -1,6 +1,8 @@
 .multiple-click-stage {
   display: flex;
   flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .multiple-click-stage button {
