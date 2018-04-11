@@ -1,7 +1,14 @@
 @import 'buttons.css';
 
+:root {
+  /* COLORS */
+  --font-color-main: white;
+  --font-color-warning: yellow;
+  --font-color-danger: red;
+}
+
 html {
-  background: url(../assets/stars.png) no-repeat center center fixed;
+  /* background: url(../assets/stars.png) no-repeat center center fixed; */
   background-color: black;
 }
 
