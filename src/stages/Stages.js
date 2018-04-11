@@ -70,7 +70,8 @@ export default class Stages extends React.Component {
     const firstStageIndex = 0;
     const currentStageIndex = this.state.stageIndex;
     const lastStageIndex = getStagesList().length - 1;
-    return currentStageIndex > firstStageIndex && currentStageIndex !== lastStageIndex;
+    return currentStageIndex > firstStageIndex
+      && currentStageIndex !== lastStageIndex;
   }
 
   getCountdown() {

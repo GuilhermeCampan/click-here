@@ -6,7 +6,7 @@ import './Countdown.css';
 class Countdown extends React.Component {
   constructor(props) {
     super(props);
-    this.tick = 0;
+    this.tick = null;
     this.tickInteraval = 1000;
     this.state = {
       countdown: moment(this.props.timeToBeatGame || 0)
@@ -19,7 +19,7 @@ class Countdown extends React.Component {
 
   startTick() {
     if (this.tick){
-      this.cleatTick();
+      this.stopTick();
     }
     this.tick = setInterval(() => {
       this.updateTimer();
@@ -42,7 +42,7 @@ class Countdown extends React.Component {
   }
 
   handleCountdownOver(){
-    this.cleatTick();
+    this.stopTick();
     this.props.handleCountdownOver();
   }
 
@@ -54,10 +54,10 @@ class Countdown extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.tick);
+    this.stopTick();
   }
 
-  cleatTick() {
+  stopTick() {
     clearInterval(this.tick);
   }
 
