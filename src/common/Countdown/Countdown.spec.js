@@ -10,7 +10,7 @@ describe('<Countdown>', () => {
   let wrapperInstance;
   let mockProps = {
     timeToBeatGame: 30000, // 30s
-    handleCountdownOver: onCountdownOver
+    onCountdownOver: onCountdownOver
   };
 
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('<Countdown>', () => {
   });
 
   it('should set a value to state.countdown', () => {
-    expect(wrapperInstance.state.countdown).to.be.ok;
+    expect(wrapperInstance.state.countdown).to.match(/00:30/);
   });
 
   it('should intialized the tick', () => {
@@ -42,6 +42,61 @@ describe('<Countdown>', () => {
   it('should send to parent when the countdown is over', () => {
     wrapperInstance.handleCountdownOver();
     expect(onCountdownOver).to.have.property('callCount', 1);
+  });
+
+  it('should had subtract from the countdown', () => {
+    expect(wrapperInstance.state.countdown).to.match(/00:30/);
+    wrapperInstance.updateTimer();
+    expect(wrapperInstance.state.countdown).to.match(/00:29/);
+  });
+
+  it('should not descrease countdown beyond 0', () => {
+    const mockProps = {
+      timeToBeatGame: 0,
+      onCountdownOver: fn => fn
+    };
+    const wrapper = shallow(<Countdown {...mockProps} />);
+    const wrapperInstance = wrapper.instance();
+    wrapperInstance.updateTimer();
+    expect(wrapperInstance.state.countdown).equal(0);
+    wrapper.unmount();
+  });
+
+  it('should get countdown class', () => {
+    const mockProps = {
+      timeToBeatGame: 30000,
+      onCountdownOver: fn => fn
+    };
+    const wrapper = shallow(<Countdown {...mockProps} />);
+    const wrapperInstance = wrapper.instance();
+    expect(wrapperInstance.getClassNames()).equal('countdown');
+    wrapper.unmount();
+  });
+
+  it('should get countdown--warning class', () => {
+    const mockProps = {
+      timeToBeatGame: 20000,
+      onCountdownOver: fn => fn
+    };
+    const wrapper = shallow(<Countdown {...mockProps} />);
+    const wrapperInstance = wrapper.instance();
+    expect(wrapperInstance.getClassNames()).equal(
+      'countdown countdown--warning'
+    );
+    wrapper.unmount();
+  });
+
+  it('should get countdown--danger class', () => {
+    const mockProps = {
+      timeToBeatGame: 10000,
+      onCountdownOver: fn => fn
+    };
+    const wrapper = shallow(<Countdown {...mockProps} />);
+    const wrapperInstance = wrapper.instance();
+    expect(wrapperInstance.getClassNames()).equal(
+      'countdown countdown--danger'
+    );
+    wrapper.unmount();
   });
 
   afterEach(() => {

@@ -18,9 +18,6 @@ class Countdown extends React.Component {
   }
 
   startTick() {
-    if (this.tick){
-      this.stopTick();
-    }
     this.tick = setInterval(() => {
       this.updateTimer();
     }, this.tickInteraval);
@@ -43,7 +40,7 @@ class Countdown extends React.Component {
 
   handleCountdownOver(){
     this.stopTick();
-    this.props.handleCountdownOver();
+    this.props.onCountdownOver();
   }
 
   getTimeFormated = () => {
@@ -83,7 +80,7 @@ class Countdown extends React.Component {
 
 Countdown.propTypes = {
   timeToBeatGame: PropTypes.number.isRequired,
-  handleCountdownOver: PropTypes.func
+  onCountdownOver: PropTypes.func
 };
 
 export default Countdown;

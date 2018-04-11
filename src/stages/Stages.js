@@ -38,7 +38,7 @@ export default class Stages extends React.Component {
     this.setState({ stageIndex: 1 });
   };
 
-  gotToGameOver = () => {
+  goToGameOver = () => {
     this.setState({ stageIndex: 0 });
   };
 
@@ -83,7 +83,7 @@ export default class Stages extends React.Component {
     const avaibleTimeToBeatGame = playbleStages * averageTimePerStage;
     const CountdownSettings = {
       timeToBeatGame: avaibleTimeToBeatGame,
-      handleCountdownOver: () => this.gotToGameOver()
+      onCountdownOver: () => this.goToGameOver()
     };
     return <Countdown {...CountdownSettings}/>;
   }

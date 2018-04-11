@@ -34,7 +34,7 @@ storiesOf('common', module)
   .add('Countdown', () => {
     const countdownProps = {
       timeToBeatGame: 30000, // 30s
-      handleCountdownOver: action('handleCountDownOver')
+      onCountdownOver: action('onCountdownOver')
     };
     return <Countdown {...countdownProps}/>;
   });

@@ -49,6 +49,11 @@ describe('<Stages>', () => {
   });
 
   it('should got to the game over', () => {
+    wrapperInstance.goToGameOver();
+    expect(wrapperInstance.state.stageIndex).equal(0);
+  });
+
+  it('should go to game over if something is wrong', () => {
     const stageModifer = 1;
     const expectedStageIndex = 2;
     wrapperInstance.changeStageIndex(stageModifer);
@@ -61,4 +66,5 @@ describe('<Stages>', () => {
     wrapperInstance.restartGame();
     expect(wrapperInstance.state.stageIndex).equal(expectedStageIndex);
   });
+
 });
