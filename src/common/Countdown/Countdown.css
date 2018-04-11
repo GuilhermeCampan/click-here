@@ -1,15 +1,12 @@
 .countdown {
-  font-size: 2rem;
   color: var(--font-color-main);
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 
 .countdown--warning {
-  font-size: 2.1rem;
   color: var(--font-color-warning);
 }
 
 .countdown--danger {
-  font-size: 2.5rem;
   color: var(--font-color-danger);
 }

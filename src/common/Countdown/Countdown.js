@@ -74,7 +74,7 @@ class Countdown extends React.Component {
   }
 
   render() {
-    return <h3 className={this.getClassNames()}>{this.getTimeFormated()}</h3>;
+    return <h2 className={this.getClassNames()}>{this.getTimeFormated()}</h2>;
   }
 }
 

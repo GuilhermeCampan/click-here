@@ -1,21 +1,14 @@
 .stages {
   margin: 0 auto;
-  min-height: 500px;
-  max-width: 700px;
-  background: url(../assets/stars.png) no-repeat center center fixed;
+  height: 500px;
+  max-width: 600px;
+  background: url(/static/media/stars.bbe0356d.png) no-repeat center center fixed;
   background-color: var(--bg-color-main);
+  background-size: 100% auto;
 }
 
 .stages__header {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   width: 100%;
-}
-
-.stages__footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  right: 10px;
-  text-align: right;
 }

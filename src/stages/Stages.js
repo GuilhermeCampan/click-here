@@ -95,12 +95,10 @@ export default class Stages extends React.Component {
       <div className="stages">
         <div className="stages__header">
           {this.getTitle()}
+          {this.getCountdown()}
         </div>
         <div className="stages__container">
           {currentStage}
-        </div>
-        <div className="stages__footer">
-          {this.getCountdown()}
         </div>
       </div>
     );
