@@ -1,6 +1,7 @@
 import React from 'react';
-import { Title } from './common';
+import { Title, Countdown } from '../common';
 import { getStagesList } from './stagesList';
+import './Stages.css';
 
 export default class Stages extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class Stages extends React.Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.stages = getStagesList(this.stageControls);
   }
 
@@ -35,7 +36,11 @@ export default class Stages extends React.Component {
   };
 
   restartGame = () => {
-    this.setState({stageIndex: 1});
+    this.setState({ stageIndex: 1 });
+  };
+
+  goToGameOver = () => {
+    this.setState({ stageIndex: 0 });
   };
 
   changeStageIndex(modifer) {
@@ -49,31 +54,54 @@ export default class Stages extends React.Component {
   getNewStageIndex = newStageIndex => {
     const defaultStageIndex = 0;
     const useDefaultStage =
-      newStageIndex >= this.stages.length
-      || newStageIndex < defaultStageIndex;
+      newStageIndex >= this.stages.length || newStageIndex < defaultStageIndex;
 
-    return useDefaultStage
-      ? defaultStageIndex
-      : newStageIndex;
+    return useDefaultStage ? defaultStageIndex : newStageIndex;
   };
 
-  getTitle(){
-    const currentStageIndex = this.state.stageIndex;
-    const firstStageIndex = 0;
-    const lastStageIndex = getStagesList().length -1;
-    if (currentStageIndex === firstStageIndex || currentStageIndex === lastStageIndex) {
+  getTitle() {
+    if (!this.isPlaybleStage()) {
       return;
     }
-    const stageTitle = `Stage: ${currentStageIndex}`;
+    const stageTitle = `Stage: ${this.state.stageIndex}`;
     return <Title text={stageTitle} />;
+  }
+
+  isPlaybleStage() {
+    const firstStageIndex = 0;
+    const currentStageIndex = this.state.stageIndex;
+    const lastStageIndex = getStagesList().length - 1;
+    return currentStageIndex > firstStageIndex
+      && currentStageIndex !== lastStageIndex;
+  }
+
+  getCountdown() {
+    if (!this.isPlaybleStage()) {
+      return;
+    }
+    const averageTimePerStage = 6000; // 6s
+    const playbleStages = getStagesList().length - 2;
+    const avaibleTimeToBeatGame = playbleStages * averageTimePerStage;
+    const CountdownSettings = {
+      timeToBeatGame: avaibleTimeToBeatGame,
+      onCountdownOver: () => this.goToGameOver()
+    };
+    return <Countdown {...CountdownSettings}/>;
   }
 
   render() {
     const currentStage = this.getCurrentStage();
     return (
-      <div>
-        {this.getTitle()}
-        {currentStage}
+      <div className="stages">
+        <div className="stages__header">
+          {this.getTitle()}
+        </div>
+        <div className="stages__container">
+          {currentStage}
+        </div>
+        <div className="stages__footer">
+          {this.getCountdown()}
+        </div>
       </div>
     );
   }
