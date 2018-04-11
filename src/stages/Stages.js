@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../common';
+import { Title, Countdown } from '../common';
 import { getStagesList } from './stagesList';
 
 export default class Stages extends React.Component {
@@ -38,6 +38,10 @@ export default class Stages extends React.Component {
     this.setState({ stageIndex: 1 });
   };
 
+  gotToGameOver = () => {
+    this.setState({ stageIndex: 0 });
+  };
+
   changeStageIndex(modifer) {
     this.setState(prevState => {
       return {
@@ -55,23 +59,38 @@ export default class Stages extends React.Component {
   };
 
   getTitle() {
-    const currentStageIndex = this.state.stageIndex;
-    const firstStageIndex = 0;
-    const lastStageIndex = getStagesList().length - 1;
-    if (
-      currentStageIndex === firstStageIndex ||
-      currentStageIndex === lastStageIndex
-    ) {
+    if (!this.isPlaybleStage()) {
       return;
     }
-    const stageTitle = `Stage: ${currentStageIndex}`;
+    const stageTitle = `Stage: ${this.state.stageIndex}`;
     return <Title text={stageTitle} />;
+  }
+
+  isPlaybleStage() {
+    const firstStageIndex = 0;
+    const currentStageIndex = this.state.stageIndex;
+    const lastStageIndex = getStagesList().length - 1;
+    return currentStageIndex > firstStageIndex && currentStageIndex !== lastStageIndex;
+  }
+
+  getCountdown() {
+    if (!this.isPlaybleStage()) {
+      return;
+    }
+    const averageTimePerStage = 10000; // 10s
+    const avaibleTimeToBeatGame = getStagesList().length * averageTimePerStage;
+    const CountdownSettings = {
+      timeToBeatGame: avaibleTimeToBeatGame,
+      handleCountdownOver: () => this.gotToGameOver()
+    };
+    return <Countdown {...CountdownSettings}/>;
   }
 
   render() {
     const currentStage = this.getCurrentStage();
     return (
       <div>
+        {this.getCountdown()}
         {this.getTitle()}
         {currentStage}
       </div>
