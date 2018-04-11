@@ -1,6 +1,7 @@
 import React from 'react';
 import { Title, Countdown } from '../common';
 import { getStagesList } from './stagesList';
+import './Stages.css';
 
 export default class Stages extends React.Component {
   constructor(props) {
@@ -91,10 +92,16 @@ export default class Stages extends React.Component {
   render() {
     const currentStage = this.getCurrentStage();
     return (
-      <div>
-        {this.getCountdown()}
-        {this.getTitle()}
-        {currentStage}
+      <div className="stages">
+        <div className="stages__header">
+          {this.getTitle()}
+        </div>
+        <div className="stages__container">
+          {currentStage}
+        </div>
+        <div className="stages__footer">
+          {this.getCountdown()}
+        </div>
       </div>
     );
   }

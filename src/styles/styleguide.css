@@ -8,13 +8,9 @@
   --bg-color-main: black
 }
 
-html {
-  /* background: url(../assets/stars.png) no-repeat center center fixed; */
-  background-color: var(--bg-color-main);
-}
-
-body {
+html, body {
   color: var(--font-color-main);
   font-size: 16px;
   text-align: center;
+  background: var(--bg-color-main);
 }
