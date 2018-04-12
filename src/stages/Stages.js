@@ -1,15 +1,27 @@
 import React from 'react';
 import { Title, Countdown } from '../common';
-import { getStagesList } from './stagesList';
+import {
+  GameOver,
+  BasicStage,
+  VerticalStage,
+  HorizontalStage,
+  DontClickStage,
+  MultipleClickStage,
+  MobileBackgroundStage,
+  EndGame
+} from './stagesList';
 import './Stages.css';
 
 export default class Stages extends React.Component {
   constructor(props) {
     super(props);
+    this.restartGame = this.restartGame.bind(this);
+    this.nextStage = this.nextStage.bind(this);
+    this.previousStage = this.previousStage.bind(this);
     this.stageControls = {
-      restartGame: () => this.restartGame,
-      nextStage: () => this.nextStage,
-      previousStage: () => this.previousStage
+      restartGame: this.restartGame,
+      nextStage: this.nextStage,
+      previousStage: this.previousStage
     };
     this.stages = [];
     this.state = {
@@ -18,26 +30,37 @@ export default class Stages extends React.Component {
   }
 
   componentWillMount() {
-    this.stages = getStagesList(this.stageControls);
+    this.stages = this.getStagesList(this.stageControls);
   }
+
+  getStagesList = () => [
+    <GameOver key="gameOver" {...this.stageControls} />,
+    <BasicStage key="stage1" {...this.stageControls} />,
+    <VerticalStage key="stage2" {...this.stageControls} />,
+    <HorizontalStage key="stage3" {...this.stageControls} />,
+    <DontClickStage key="stage4" {...this.stageControls} />,
+    <MultipleClickStage key="stage5" {...this.stageControls} />,
+    <MobileBackgroundStage key="stage6" {...this.stageControls} />,
+    <EndGame key="endGame" {...this.stageControls} />
+  ];
 
   getCurrentStage = () => {
     return this.stages[this.state.stageIndex];
-  };
+  }
 
-  nextStage = () => {
+  nextStage() {
     const increseModifier = 1;
     this.changeStageIndex(increseModifier);
-  };
+  }
 
-  previousStage = () => {
+  previousStage() {
     const decreseModifer = -1;
     this.changeStageIndex(decreseModifer);
-  };
+  }
 
-  restartGame = () => {
+  restartGame() {
     this.setState({ stageIndex: 1 });
-  };
+  }
 
   goToGameOver = () => {
     this.setState({ stageIndex: 0 });
@@ -70,7 +93,7 @@ export default class Stages extends React.Component {
   isPlaybleStage() {
     const firstStageIndex = 0;
     const currentStageIndex = this.state.stageIndex;
-    const lastStageIndex = getStagesList().length - 1;
+    const lastStageIndex = this.getStagesList().length - 1;
     return currentStageIndex > firstStageIndex
       && currentStageIndex !== lastStageIndex;
   }
@@ -80,11 +103,11 @@ export default class Stages extends React.Component {
       return;
     }
     const averageTimePerStage = 6000; // 6s
-    const playbleStages = getStagesList().length - 2;
+    const playbleStages = this.getStagesList().length - 2;
     const avaibleTimeToBeatGame = playbleStages * averageTimePerStage;
     const CountdownSettings = {
       timeToBeatGame: avaibleTimeToBeatGame,
-      onCountdownOver: () => this.goToGameOver()
+      onCountdownOver: this.goToGameOver
     };
     return <Countdown {...CountdownSettings}/>;
   }

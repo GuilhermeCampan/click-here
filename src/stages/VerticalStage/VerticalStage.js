@@ -5,7 +5,7 @@ import './VerticalStage.css';
 
 const VerticalStage = ({ nextStage }) => (
   <div className="vertical-travelling-wrapper">
-    <ClickHere handleClick={nextStage()} />
+    <ClickHere handleClick={nextStage} />
   </div>
 );
 
@@ -14,3 +14,4 @@ VerticalStage.propTypes = {
 };
 
 export default VerticalStage;
+

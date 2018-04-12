@@ -37,17 +37,17 @@ class MultipleClickStage extends React.Component {
   }
 
   getCorrectButton = () =>
-    <ClickHere key="correct" handleClick={this.props.nextStage()}/>;
+    <ClickHere key="correct" handleClick={this.handleCorrectuttonClick}/>;
 
   getFalseButtons = () => this.falseButtonTexts.map((text, index) => {
     const isDisabled = this.state.buttonsDisabled[index];
     const buttonProps = {
-      handleClick: () => this.handleFalseButtonClick(index),
+      handleClick: this.handleFalseButtonClick.bind(this, index),
       buttonText: text,
       classModifiers: {disabled: isDisabled}
     };
 
-    return <ClickHere key={index} {...buttonProps} />;
+    return <ClickHere key={index} {...buttonProps}/>;
     }
   );
 
@@ -55,6 +55,10 @@ class MultipleClickStage extends React.Component {
     let newButtonsDisabled = this.state.buttonsDisabled.slice();
     newButtonsDisabled[i] = true;
     this.setState({buttonsDisabled: newButtonsDisabled});
+  };
+
+  handleCorrectuttonClick = () => {
+    this.props.nextStage();
   };
 
   render() {
