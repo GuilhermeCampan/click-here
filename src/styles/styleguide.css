@@ -1,12 +1,16 @@
 @import 'buttons.css';
 
-html {
-  background: url(../assets/stars.png) no-repeat center center fixed;
-  background-color: black;
+:root {
+  /* COLORS */
+  --font-color-main: white;
+  --font-color-warning: yellow;
+  --font-color-danger: red;
+  --bg-color-main: black
 }
 
-body {
-  color: white;
+html, body {
+  color: var(--font-color-main);
   font-size: 16px;
   text-align: center;
+  background: var(--bg-color-main);
 }

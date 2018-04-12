@@ -5,14 +5,16 @@ import VerticalStage from './VerticalStage/VerticalStage';
 import HorizontalStage from './HorizontalStage/HorizontalStage';
 import DontClickStage from './DontClickStage/DontClickStage';
 import MultipleClickStage from './MultipleClickStage/MultipleClickStage';
+import EndGame from './EndGame/EndGame';
 
 const getStagesList = (stageControls) => [
-  <GameOver key="stage0" {...stageControls} />,
+  <GameOver key="gameOver" {...stageControls} />,
   <BasicStage key="stage1" {...stageControls} />,
   <VerticalStage key="stage2" {...stageControls} />,
   <HorizontalStage key="stage3" {...stageControls} />,
   <DontClickStage key="stage4" {...stageControls} />,
-  <MultipleClickStage key="stage5" {...stageControls} />
+  <MultipleClickStage key="stage5" {...stageControls} />,
+  <EndGame key="endGame" {...stageControls} />
 ];
 
 export {
@@ -22,5 +24,6 @@ export {
   VerticalStage,
   HorizontalStage,
   DontClickStage,
-  MultipleClickStage
+  MultipleClickStage,
+  EndGame
 };

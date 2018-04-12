@@ -1,0 +1,12 @@
+.countdown {
+  color: var(--font-color-main);
+  transition: all 1s ease;
+}
+
+.countdown--warning {
+  color: var(--font-color-warning);
+}
+
+.countdown--danger {
+  color: var(--font-color-danger);
+}

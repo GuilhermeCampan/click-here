@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ClickHere } from '../common';
+import { ClickHere } from '../../common';
 import './VerticalStage.css';
 
 const VerticalStage = ({ nextStage }) => (
