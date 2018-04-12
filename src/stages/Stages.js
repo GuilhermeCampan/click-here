@@ -1,6 +1,5 @@
 import React from 'react';
 import { Title, Countdown } from '../common';
-import { getStagesList } from './stagesList';
 import {
   GameOver,
   BasicStage,
@@ -16,10 +15,13 @@ import './Stages.css';
 export default class Stages extends React.Component {
   constructor(props) {
     super(props);
+    this.restartGame = this.restartGame.bind(this);
+    this.nextStage = this.nextStage.bind(this);
+    this.previousStage = this.previousStage.bind(this);
     this.stageControls = {
-      restartGame: () => this.restartGame,
-      nextStage: () => this.nextStage,
-      previousStage: () => this.previousStage
+      restartGame: this.restartGame,
+      nextStage: this.nextStage,
+      previousStage: this.previousStage
     };
     this.stages = [];
     this.state = {
@@ -46,17 +48,18 @@ export default class Stages extends React.Component {
     return this.stages[this.state.stageIndex];
   };
 
-  nextStage = () => {
+  nextStage() {
+    console.log('nextStage called');
     const increseModifier = 1;
     this.changeStageIndex(increseModifier);
   };
 
-  previousStage = () => {
+  previousStage() {
     const decreseModifer = -1;
     this.changeStageIndex(decreseModifer);
   };
 
-  restartGame = () => {
+  restartGame() {
     this.setState({ stageIndex: 1 });
   };
 
@@ -91,7 +94,7 @@ export default class Stages extends React.Component {
   isPlaybleStage() {
     const firstStageIndex = 0;
     const currentStageIndex = this.state.stageIndex;
-    const lastStageIndex = getStagesList().length - 1;
+    const lastStageIndex = this.getStagesList().length - 1;
     return currentStageIndex > firstStageIndex
       && currentStageIndex !== lastStageIndex;
   }
@@ -101,7 +104,7 @@ export default class Stages extends React.Component {
       return;
     }
     const averageTimePerStage = 6000; // 6s
-    const playbleStages = getStagesList().length - 2;
+    const playbleStages = this.getStagesList().length - 2;
     const avaibleTimeToBeatGame = playbleStages * averageTimePerStage;
     const CountdownSettings = {
       timeToBeatGame: avaibleTimeToBeatGame,

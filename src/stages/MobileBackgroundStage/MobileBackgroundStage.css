@@ -13,8 +13,19 @@
   background: #d9b8d9;
   position: absolute;
   transition: background 0.1s linear;
-  animation: horizontal-move 5s infinite alternate;
+  animation: box-mobile-animation 5s infinite alternate;
   z-index: 0;
+}
+
+.box-mobile-cliclable {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  position: absolute;
+  border: 1px red solid;
+  animation: box-mobile-animation 5s infinite alternate;
+  z-index: 2;
 }
 
 .box-mobile--overlaps {
@@ -27,12 +38,11 @@
   display: block;
   width: 100px;
   height: 100px;
-  border: 1px teal solid;
   left: 200px;
   z-index: 1;
 }
 
-@keyframes horizontal-move {
+@keyframes box-mobile-animation {
   from {
     transform: translateX(0);
   }

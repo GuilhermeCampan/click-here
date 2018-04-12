@@ -39,12 +39,9 @@ class MobileBackgroundStage extends React.Component {
   };
 
   handleClick = () => {
-    console.log(this.props);
-    // return () => this.props.nextStage();
-    // if (this.state.overlaps) {
-    //   console.log('clicked while overlaps');
-    //   this.props.nextStage();
-    // }
+    if (this.state.overlaps) {
+      this.props.nextStage();
+    }
   }
 
   componentWillUnmount() {
@@ -55,8 +52,8 @@ class MobileBackgroundStage extends React.Component {
     const boxMobileClass = this.state.overlaps ? 'box-mobile box-mobile--overlaps' : 'box-mobile';
     return (
       <div className='box-wrapper'>
-        <div onClick={() => this.state.overlaps ? this.handleClick : this.props.nextStage}
-        className={boxMobileClass}/>
+        <div className={boxMobileClass}/>
+        <div onClick={this.handleClick} className='box-mobile-cliclable'/>
         <div className='box-fixed'>
           Click Here!
         </div>

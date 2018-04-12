@@ -2,10 +2,10 @@
   margin: 0 auto;
   width: 300px;
   text-align: center;  
-  animation: horizontal-move 1s infinite alternate;
+  animation: horizontal-travelling-animation 1s infinite alternate;
 }
 
-@keyframes horizontal-move {
+@keyframes horizontal-travelling-animation {
   from {
     transform: translateX(-150px);
   }

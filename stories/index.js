@@ -16,9 +16,9 @@ import {
 } from '../src/stages/stagesList';
 
 const stageControlsActions = {
-  restartGame: () => action('restartGame'),
-  previousStage: () => action('previousStage'),
-  nextStage: () => action('nextStage')
+  restartGame: action('restartGame'),
+  previousStage: action('previousStage'),
+  nextStage: action('nextStage')
 };
 
 storiesOf('common', module)
