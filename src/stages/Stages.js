@@ -49,7 +49,6 @@ export default class Stages extends React.Component {
   };
 
   nextStage() {
-    console.log('nextStage called');
     const increseModifier = 1;
     this.changeStageIndex(increseModifier);
   };

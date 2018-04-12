@@ -7,7 +7,7 @@ class MobileBackgroundStage extends React.Component {
     super(props);
     this.tick = null;
     this.state = {
-      overlaps: false
+      overlaping: false
     };
   }
 
@@ -23,13 +23,13 @@ class MobileBackgroundStage extends React.Component {
     const boxMobile = document.body
       .querySelector('.box-mobile')
       .getBoundingClientRect();
-      
+
     this.setState({
-      overlaps: this.isOverlaps(boxMobile, boxFixed)
+      overlaping: this.isOverlaping(boxMobile, boxFixed)
     });
   };
 
-  isOverlaps = (boxA, boxB) => {
+  isOverlaping = (boxA, boxB) => {
     if (boxA.x + boxA.width > boxB.x + boxB.width/2
       && boxA.x < boxB.x + boxB.width
     ) {
@@ -39,7 +39,7 @@ class MobileBackgroundStage extends React.Component {
   };
 
   handleClick = () => {
-    if (this.state.overlaps) {
+    if (this.state.overlaping) {
       this.props.nextStage();
     }
   }
@@ -49,7 +49,7 @@ class MobileBackgroundStage extends React.Component {
   }
 
   render() {
-    const buttonClass = this.state.overlaps ? 'click-here-button' : 'click-here-button click-here-button--disabled';
+    const buttonClass = this.state.overlaping ? 'click-here-button' : 'click-here-button click-here-button--disabled';
     return (
       <div className='box-wrapper'>
         <div className="box-mobile">
