@@ -46,21 +46,21 @@ export default class Stages extends React.Component {
 
   getCurrentStage = () => {
     return this.stages[this.state.stageIndex];
-  };
+  }
 
   nextStage() {
     const increseModifier = 1;
     this.changeStageIndex(increseModifier);
-  };
+  }
 
   previousStage() {
     const decreseModifer = -1;
     this.changeStageIndex(decreseModifer);
-  };
+  }
 
   restartGame() {
     this.setState({ stageIndex: 1 });
-  };
+  }
 
   goToGameOver = () => {
     this.setState({ stageIndex: 0 });

@@ -5,7 +5,10 @@ import './DontClickStage.css';
 
 const DontClickStage = ({ nextStage, previousStage }) => {
   const buttons = [
-    <ClickHere key="wrong" handleClick={previousStage} buttonText='Dont Click Here!' />,
+    <ClickHere key="wrong"
+      handleClick={previousStage}
+      buttonText='Dont Click Here!'
+    />,
     <ClickHere key="correct" handleClick={nextStage} />
   ];
 

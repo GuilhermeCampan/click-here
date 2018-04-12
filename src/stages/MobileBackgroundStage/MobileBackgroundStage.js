@@ -49,7 +49,9 @@ class MobileBackgroundStage extends React.Component {
   }
 
   render() {
-    const buttonClass = this.state.overlaping ? 'click-here-button' : 'click-here-button click-here-button--disabled';
+    const buttonClass = this.state.overlaping
+      ? 'click-here-button'
+      : 'click-here-button click-here-button--disabled';
     return (
       <div className='box-wrapper'>
         <div className="box-mobile">
