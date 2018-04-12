@@ -4,7 +4,7 @@
 # click-here
 Just a silly game
 
-Heroku app: https://click-here-dev.herokuapp.com/
+Heroku app: https://click-here-game.herokuapp.com/
 
 Install: yarn
 
