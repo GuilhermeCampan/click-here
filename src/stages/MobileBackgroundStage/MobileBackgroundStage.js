@@ -16,12 +16,6 @@ class MobileBackgroundStage extends React.Component {
   }
 
   updateOverLaps = () => {
-    this.setState({
-      overlaps: this.isOverlaps()
-    });
-  };
-
-  isOverlaps = () => {
     const boxFixed = document.body
       .querySelector('.box-fixed')
       .getBoundingClientRect();
@@ -29,9 +23,15 @@ class MobileBackgroundStage extends React.Component {
     const boxMobile = document.body
       .querySelector('.box-mobile')
       .getBoundingClientRect();
+      
+    this.setState({
+      overlaps: this.isOverlaps(boxMobile, boxFixed)
+    });
+  };
 
-    if (boxMobile.x + boxMobile.width > boxFixed.x + boxFixed.width/2
-      && boxMobile.x < boxFixed.x + boxFixed.width
+  isOverlaps = (boxA, boxB) => {
+    if (boxA.x + boxA.width > boxB.x + boxB.width/2
+      && boxA.x < boxB.x + boxB.width
     ) {
       return true;
     }
@@ -49,11 +49,13 @@ class MobileBackgroundStage extends React.Component {
   }
 
   render() {
-    const boxMobileClass = this.state.overlaps ? 'box-mobile box-mobile--overlaps' : 'box-mobile';
+    const buttonClass = this.state.overlaps ? 'click-here-button' : 'click-here-button click-here-button--disabled';
     return (
       <div className='box-wrapper'>
-        <div className={boxMobileClass}/>
-        <div onClick={this.handleClick} className='box-mobile-cliclable'/>
+        <div className="box-mobile">
+          <button className={buttonClass}/>
+        </div>
+        <div onClick={this.handleClick} className='box-mobile-clickable'/>
         <div className='box-fixed'>
           Click Here!
         </div>
