@@ -5,7 +5,7 @@ import './HorizontalStage.css';
 
 const HorizontalStage = ({ nextStage }) => (
   <div className="horizontal-travelling-wrapper">
-    <ClickHere handleClick={nextStage()} />
+    <ClickHere handleClick={nextStage} />
   </div>
 );
 

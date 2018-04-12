@@ -1,0 +1,49 @@
+.box-wrapper {
+  display: block;
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+.box-mobile {
+  display: block;
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  animation: box-mobile-animation 5s infinite alternate;
+  z-index: 0;
+}
+
+.box-mobile .click-here-button {
+  margin: 0;
+}
+
+.box-mobile-clickable {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  position: absolute;
+  animation: box-mobile-animation 5s infinite alternate;
+  z-index: 2;
+}
+
+.box-fixed {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 100px;
+  left: 200px;
+  top: 30px;
+  z-index: 1;
+  font-size: 20px;
+}
+
+@keyframes box-mobile-animation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(400px);
+  }
+}
