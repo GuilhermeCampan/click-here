@@ -1,0 +1,42 @@
+.box-wrapper {
+  display: block;
+  width: 100%;
+  height: 500px;
+  border: 1px red solid;
+  position: relative;
+}
+
+.box-mobile {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: #d9b8d9;
+  position: absolute;
+  transition: background 0.1s linear;
+  animation: horizontal-move 5s infinite alternate;
+  z-index: 0;
+}
+
+.box-mobile--overlaps {
+  background: purple;
+  position: absolute;
+}
+
+.box-fixed {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: 1px teal solid;
+  left: 200px;
+  z-index: 1;
+}
+
+@keyframes horizontal-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(400px);
+  }
+}

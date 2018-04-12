@@ -11,6 +11,7 @@ import {
   HorizontalStage,
   DontClickStage,
   MultipleClickStage,
+  MobileBackgroundStage,
   EndGame
 } from '../src/stages/stagesList';
 
@@ -60,6 +61,9 @@ storiesOf('Stages', module)
   ))
   .add('MultipleClickStage', () => (
     <MultipleClickStage {...stageControlsActions}/>
+  ))
+  .add('MobileBackgroundStage', () => (
+    <MobileBackgroundStage {...stageControlsActions}/>
   ))
   .add('EndGame', () => (
     <EndGame {...stageControlsActions} />
