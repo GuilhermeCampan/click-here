@@ -2,25 +2,25 @@ export default class Tick {
   constructor(handleTick) {
     this.handleTick = handleTick;
     this.running = false;
+    this.fps = 30;
+    this.timePerTick = 1000/this.fps;
+    this.timer = 0;
+    this.delta = 0;
   }
 
   run() {
-    const fps = 30;
-    const timePerTick = 1000/fps;
-    let delta = 0;
-    let now;
-    let lastTime = performance.now();
-    let timer = 0;
+    let currentTime;
+    let lastTime = window.performance.now();
     const loop = () => {
       if (this.running){
-        now = performance.now();
-        delta = now - lastTime;
-        timer += delta;
-        lastTime = now;
+        currentTime = window.performance.now();
+        this.delta = currentTime - lastTime;
+        this.timer += this.delta;
+        lastTime = currentTime;
       }
-      if (timer >= timePerTick){
-        const dt = timer/1000;
-        timer = 0;
+      if (this.timer >= this.timePerTick){
+        const dt = this.timer/1000;
+        this.timer = 0;
         this.handleTick(dt);
       }
       this.running && window.requestAnimationFrame(loop);
