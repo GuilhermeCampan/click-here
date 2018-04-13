@@ -5,9 +5,9 @@
 
 @keyframes vertical-move {
   from {
-    transform: translateY(0);
+    transform: translateY(-150px);
   }
   to {
-    transform: translateY(300px);
+    transform: translateY(150px);
   }
 }

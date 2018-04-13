@@ -1,22 +1,6 @@
-/* .click-here-button {
-  width: 150px;
-  height: 100px;
-  background: #673AB7;
-  color: white;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
-  margin: 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-.click-here-button--disabled {
-  background: gray;
-} */
-
 .click-here-button {
   --button-width: 150px;
-  /* float: left; */
+  --button-height: 50px;
   position: relative;
   top: 0;
   cursor: pointer;
@@ -32,7 +16,7 @@
   color: white;
   line-height: 45px;
   width: var(--button-width);
-  height: 50px;
+  height: var(--button-height);
   font-size: 1rem;
   outline:none;
 }

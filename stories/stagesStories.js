@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Stages from '../src/stages/Stages';
+import PropTypes from 'prop-types';
 import {
   GameOver,
   BasicStage,
@@ -12,7 +13,7 @@ import {
   MobileBackgroundStage,
   EndGame
 } from '../src/stages/stagesList';
-import './commonStories';
+import './stories.css';
 
 const stageControlsActions = {
   restartGame: action('restartGame'),
@@ -20,31 +21,41 @@ const stageControlsActions = {
   nextStage: action('nextStage')
 };
 
-storiesOf('Stages 2', module)
+const FakeContainer = ({children}) => (
+  <div className="stages__container limit-box">
+    {children}
+  </div>
+);
+
+FakeContainer.propTypes = {
+  children: PropTypes.element
+};
+
+storiesOf('Stages', module)
   .add('All stages', () => (
     <Stages />
   ))
   .add('GameOver', () => (
-    <GameOver {...stageControlsActions} />
+    <FakeContainer> <GameOver {...stageControlsActions}/> </FakeContainer>
   ))
   .add('BasicStage', () => (
-    <BasicStage {...stageControlsActions} />
+    <FakeContainer> <BasicStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('VerticalStage', () => (
-    <VerticalStage {...stageControlsActions}/>
+    <FakeContainer> <VerticalStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('HorizontalStage', () => (
-    <HorizontalStage {...stageControlsActions}/>
+    <FakeContainer> <HorizontalStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('DontClickStage', () => (
-    <DontClickStage {...stageControlsActions}/>
+    <FakeContainer> <DontClickStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('MultipleClickStage', () => (
-    <MultipleClickStage {...stageControlsActions}/>
+    <FakeContainer> <MultipleClickStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('MobileBackgroundStage', () => (
-    <MobileBackgroundStage {...stageControlsActions}/>
+    <FakeContainer> <MobileBackgroundStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('EndGame', () => (
-    <EndGame {...stageControlsActions} />
+    <FakeContainer> <EndGame {...stageControlsActions}/> </FakeContainer>
   ));

@@ -8,7 +8,7 @@
 .box-mobile {
   display: block;
   width: var(--button-width);
-  height: 100px;
+  height: var(--button-height);
   position: absolute;
   animation: box-mobile-animation 5s infinite alternate;
   z-index: 0;
@@ -21,22 +21,24 @@
 .box-mobile-clickable {
   display: block;
   width: var(--button-width);
-  height: 100px;
+  height: var(--button-height);
   background: transparent;
   position: absolute;
   animation: box-mobile-animation 5s infinite alternate;
   z-index: 2;
+  border: 2px blue solid;
 }
 
 .box-fixed {
   position: absolute;
   display: block;
   width: var(--button-width);
-  height: 100px;
+  height: var(--button-height);
   left: 200px;
   top: 0px;
   z-index: 1;
   font-size: 20px;
+  cursor: pointer;
 }
 
 @keyframes box-mobile-animation {
