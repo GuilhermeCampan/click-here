@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Tick } from '../../common';
 import './MobileBackgroundStage.css';
 
 class MobileBackgroundStage extends React.Component {
@@ -12,7 +13,8 @@ class MobileBackgroundStage extends React.Component {
   }
 
   componentDidMount() {
-    this.tick = setInterval(() => this.updateOverLaps(), 100);
+    this.tick = new Tick(this.updateOverLaps);
+    this.tick.start();
   }
 
   updateOverLaps = () => {
@@ -45,7 +47,7 @@ class MobileBackgroundStage extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.tick);
+    this.tick.stop();
   }
 
   render() {
