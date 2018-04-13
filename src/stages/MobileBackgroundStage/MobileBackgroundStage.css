@@ -7,7 +7,7 @@
 
 .box-mobile {
   display: block;
-  width: 150px;
+  width: var(--button-width);
   height: 100px;
   position: absolute;
   animation: box-mobile-animation 5s infinite alternate;
@@ -20,7 +20,7 @@
 
 .box-mobile-clickable {
   display: block;
-  width: 100px;
+  width: var(--button-width);
   height: 100px;
   background: transparent;
   position: absolute;
@@ -31,10 +31,10 @@
 .box-fixed {
   position: absolute;
   display: block;
-  width: 100px;
+  width: var(--button-width);
   height: 100px;
   left: 200px;
-  top: 30px;
+  top: 0px;
   z-index: 1;
   font-size: 20px;
 }

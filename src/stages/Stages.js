@@ -102,7 +102,7 @@ export default class Stages extends React.Component {
     if (!this.isPlaybleStage()) {
       return;
     }
-    const averageTimePerStage = 6000; // 6s
+    const averageTimePerStage = 116000; // 6s
     const playbleStages = this.getStagesList().length - 2;
     const avaibleTimeToBeatGame = playbleStages * averageTimePerStage;
     const CountdownSettings = {
