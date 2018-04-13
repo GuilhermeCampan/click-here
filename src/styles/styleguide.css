@@ -8,9 +8,19 @@
   --bg-color-main: black
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: bold 14px Arial, sans-serif;
+}
+
 html, body {
-  color: var(--font-color-main);
+  /* color: var(--font-color-main);
   font-size: 16px;
   text-align: center;
-  background: var(--bg-color-main);
+  background: var(--bg-color-main); */
+  background: white;
+  background: radial-gradient(circle, #fff 20%, black);
+  background-size: cover;
 }
