@@ -56,11 +56,10 @@ class MobileBackgroundStage extends React.Component {
       : 'click-here-button click-here-button--disabled';
     return (
       <div className='box-wrapper'>
-        <div className="box-mobile">
+        <div onClick={this.handleClick} className="box-mobile">
           <button className={buttonClass}/>
         </div>
-        <div onClick={this.handleClick} className='box-mobile-clickable'/>
-        <div className='box-fixed'>
+        <div onClick={this.handleClick} className='box-fixed'>
           Click Here!
         </div>
       </div>

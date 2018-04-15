@@ -1,14 +1,27 @@
 .stages {
-  margin: 0 auto;
+  /* margin: 0 auto;
   height: 500px;
   max-width: 600px;
   background: url(/static/media/stars.bbe0356d.png) no-repeat center center fixed;
   background-color: var(--bg-color-main);
-  background-size: 100% auto;
+  background-size: 100% auto; */
+
+  margin: 10px auto;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .stages__header {
+  flex: 1 0 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+}
+
+.stages__container {
+  flex: 1 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
 }

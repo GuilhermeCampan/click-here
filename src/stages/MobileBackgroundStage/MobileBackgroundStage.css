@@ -7,8 +7,8 @@
 
 .box-mobile {
   display: block;
-  width: 150px;
-  height: 100px;
+  width: var(--button-width);
+  height: var(--button-height);
   position: absolute;
   animation: box-mobile-animation 5s infinite alternate;
   z-index: 0;
@@ -18,25 +18,16 @@
   margin: 0;
 }
 
-.box-mobile-clickable {
-  display: block;
-  width: 100px;
-  height: 100px;
-  background: transparent;
-  position: absolute;
-  animation: box-mobile-animation 5s infinite alternate;
-  z-index: 2;
-}
-
 .box-fixed {
   position: absolute;
   display: block;
-  width: 100px;
-  height: 100px;
+  width: var(--button-width);
+  height: var(--button-height);
   left: 200px;
-  top: 30px;
+  top: 0px;
   z-index: 1;
   font-size: 20px;
+  cursor: pointer;
 }
 
 @keyframes box-mobile-animation {
