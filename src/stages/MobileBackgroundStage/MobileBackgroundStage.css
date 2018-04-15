@@ -12,6 +12,7 @@
   position: absolute;
   animation: box-mobile-animation 5s infinite alternate;
   z-index: 0;
+  margin: 240px auto;
 }
 
 .box-mobile .click-here-button {
@@ -28,6 +29,7 @@
   z-index: 1;
   font-size: 20px;
   cursor: pointer;
+  margin: 250px auto;
 }
 
 @keyframes box-mobile-animation {
