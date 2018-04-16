@@ -6,6 +6,7 @@ import DontClickStage from './DontClickStage/DontClickStage';
 import MultipleClickStage from './MultipleClickStage/MultipleClickStage';
 import MobileBackgroundStage
   from './MobileBackgroundStage/MobileBackgroundStage';
+import CatchStage from './CatchStage/CatchStage';
 import EndGame from './EndGame/EndGame';
 
 export {
@@ -16,5 +17,6 @@ export {
   DontClickStage,
   MultipleClickStage,
   MobileBackgroundStage,
+  CatchStage,
   EndGame
 };
