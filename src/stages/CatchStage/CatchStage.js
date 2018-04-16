@@ -12,7 +12,9 @@ class CatchStage extends React.Component {
     super(props);
     this.tick = null;
     this.state = {
-      overlaping: false
+      overlaping: false,
+      handClosed: false,
+      caughtCoin: false
     };
   }
 
@@ -21,39 +23,51 @@ class CatchStage extends React.Component {
     this.tick.start();
   }
 
-  getStick() {
-    return Collision.getElement('.catch-stage__game__stick');
+  getCoin() {
+    return Collision.getElement('.catch-stage__game__coin');
   }
 
   getHand() {
     return Collision.getElement('.catch-stage__game__hand');
   }
 
-  stopStick() {
-    const stick = this.getStick();
+  stopCoinAnimation() {
+    const stick = this.getCoin();
     const stickXY= Collision.getComputedTranslateXY(stick);
     stick.style.top = stickXY[1] + 'px';
     stick.style.animation = 'none';
   }
 
   updateOverLaps = () => {
-    const stickPositon = Collision.getPosition(this.getStick());
+    const stickPositon = Collision.getPosition(this.getCoin());
     const handPosition = Collision.getPosition(this.getHand());
     this.setState({
       overlaping: Collision.collisonDetect(stickPositon, handPosition)
     });
   };
 
-  isOverlaping = (boxA, boxB) => {
-    const verticalOvelaping =
-      boxA.y + boxA.height > boxB.y && boxA.y < boxB.y + boxB.height;
-    return verticalOvelaping;
-  };
+  closeHand = () => {
+    this.setState({handClosed: true});
+    if (this.state.overlaping){
+      this.setState({caughtCoin: true});
+      this.stopCoinAnimation();
+      setTimeout(()=>this.props.nextStage(),1000);
+    } else {
+      setTimeout(() => this.openHand(), 1000);
+    }
+  }
+
+  openHand = () => {
+    this.setState({handClosed: false});
+  }
+
+  caughtCoin = () => {
+    return this.state.overlaping && this.state.handClosed;
+  }
 
   handleClick = () => {
-    this.stopStick();
-    if (this.state.overlaping) {
-      this.props.nextStage();
+    if (!this.state.handClosed) {
+      this.closeHand();
     }
   }
 
@@ -62,11 +76,19 @@ class CatchStage extends React.Component {
   }
 
   render() {
+    const coinClass = !this.state.caughtCoin
+      ? 'catch-stage__game__coin'
+      : 'catch-stage__game__coin catch-stage__game__coin--caught';
+
+    const handClass = !this.state.handClosed
+      ? 'catch-stage__game__hand'
+      : 'catch-stage__game__hand catch-stage__game__hand--closed';
+
     return (
       <div className='catch-stage'>
         <div className='catch-stage__game'>
-          <div className='catch-stage__game__stick'/>
-          <div className='catch-stage__game__hand'/>
+          <div className={coinClass}/>
+          <div className={handClass}/>
         </div>
         <div className='catch-stage__game-controls'>
           <ClickHere handleClick={this.handleClick}/>
