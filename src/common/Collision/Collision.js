@@ -8,14 +8,19 @@ export const getPosition = (element) => {
 
 export const getComputedTranslateXY = (obj) => {
 	const transArr = [];
-    if (!window.getComputedStyle) return;
-    const style = getComputedStyle(obj),
-      transform = style.transform || style.webkitTransform || style.mozTransform;
-    let mat = transform.match(/^matrix3d\((.+)\)$/);    
-    if (mat) return parseFloat(mat[1].split(', ')[13]);
-    mat = transform.match(/^matrix\((.+)\)$/);
-    mat ? transArr.push(parseFloat(mat[1].split(', ')[4])) : 0;
-    mat ? transArr.push(parseFloat(mat[1].split(', ')[5])) : 0;
+    if (!window.getComputedStyle) {
+      return;
+    }
+    const style = getComputedStyle(obj);
+    const transform = style.transform
+      || style.webkitTransform
+      || style.mozTransform;
+    let matrix = transform.match(/^matrix3d\((.+)\)$/);
+
+    if (matrix) return parseFloat(matrix[1].split(', ')[13]);
+    matrix = transform.match(/^matrix\((.+)\)$/);
+    matrix ? transArr.push(parseFloat(matrix[1].split(', ')[4])) : 0;
+    matrix ? transArr.push(parseFloat(matrix[1].split(', ')[5])) : 0;
     return transArr;
 };
 

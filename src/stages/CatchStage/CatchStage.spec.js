@@ -1,23 +1,27 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import { expect } from 'chai';
-// import MobileBackgroundStage from './MobileBackgroundStage';
-// import sinon from 'sinon';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
+import CatchStage from './CatchStage';
+import sinon from 'sinon';
 
-// describe('<MobileBackgroundStage>', () => {
-//   let nextStageSpy = sinon.spy();
-//   let wrapper;
-//   let wrapperInstance;
-//   let mockProps = {
-//     nextStage: nextStageSpy
-//   };
+describe('<CatchStage>', () => {
+  let nextStageSpy = sinon.spy();
+  let wrapper;
+  // let wrapperInstance;
+  let mockProps = {
+    nextStage: nextStageSpy
+  };
 
-//   beforeEach(() => {
-//     wrapper = shallow(<MobileBackgroundStage {...mockProps} />);
-//     wrapperInstance = wrapper.instance();
-//   });
+  beforeEach(() => {
+    wrapper = shallow(<CatchStage {...mockProps} />);
+    // wrapperInstance = wrapper.instance();
+  });
 
-//   afterEach(() => {
-//     wrapper.unmount();
-//   });
-// });
+  it('do something...', () =>{
+    expect(true).equal(true);
+  });
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
+});

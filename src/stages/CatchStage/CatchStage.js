@@ -19,9 +19,21 @@ class CatchStage extends React.Component {
   }
 
   componentDidMount() {
-    this.tick = new Tick(this.updateOverLaps);
+    this.tick = new Tick(this.setOverlaping);
     this.tick.start();
   }
+
+  componentWillUnmount() {
+    this.tick.stop();
+  }
+
+  setOverlaping = () => {
+    const stickPositon = Collision.getPosition(this.getCoin());
+    const handPosition = Collision.getPosition(this.getHand());
+    this.setState({
+      overlaping: Collision.collisonDetect(stickPositon, handPosition)
+    });
+  };
 
   getCoin() {
     return Collision.getElement('.catch-stage__game__coin');
@@ -38,17 +50,19 @@ class CatchStage extends React.Component {
     stick.style.animation = 'none';
   }
 
-  updateOverLaps = () => {
-    const stickPositon = Collision.getPosition(this.getCoin());
-    const handPosition = Collision.getPosition(this.getHand());
-    this.setState({
-      overlaping: Collision.collisonDetect(stickPositon, handPosition)
-    });
-  };
+  handleClick = () => {
+    if (!this.state.handClosed) {
+      this.closeHand();
+    }
+  }
+
+  openHand = () => {
+    this.setState({handClosed: false});
+  }
 
   closeHand = () => {
     this.setState({handClosed: true});
-    if (this.state.overlaping){
+    if (this.state.overlaping) {
       this.setState({caughtCoin: true});
       this.stopCoinAnimation();
       setTimeout(()=>this.props.nextStage(),1000);
@@ -57,41 +71,34 @@ class CatchStage extends React.Component {
     }
   }
 
-  openHand = () => {
-    this.setState({handClosed: false});
+  getCoinClass() {
+    return !this.state.caughtCoin
+      ? 'catch-stage__game__coin'
+      : 'catch-stage__game__coin catch-stage__game__coin--caught';
   }
 
-  caughtCoin = () => {
-    return this.state.overlaping && this.state.handClosed;
+  gethandClass() {
+    return !this.state.handClosed
+      ? 'catch-stage__game__hand'
+      : 'catch-stage__game__hand catch-stage__game__hand--closed';
   }
 
-  handleClick = () => {
-    if (!this.state.handClosed) {
-      this.closeHand();
-    }
-  }
-
-  componentWillUnmount() {
-    this.tick.stop();
+  getButtonProps() {
+    return {
+      handleClick: this.handleClick,
+      classModifiers: {disabled: this.state.handClosed}
+    };
   }
 
   render() {
-    const coinClass = !this.state.caughtCoin
-      ? 'catch-stage__game__coin'
-      : 'catch-stage__game__coin catch-stage__game__coin--caught';
-
-    const handClass = !this.state.handClosed
-      ? 'catch-stage__game__hand'
-      : 'catch-stage__game__hand catch-stage__game__hand--closed';
-
     return (
       <div className='catch-stage'>
         <div className='catch-stage__game'>
-          <div className={coinClass}/>
-          <div className={handClass}/>
+          <div className={this.getCoinClass()}/>
+          <div className={this.gethandClass()}/>
         </div>
         <div className='catch-stage__game-controls'>
-          <ClickHere handleClick={this.handleClick}/>
+          <ClickHere {...this.getButtonProps()}/>
         </div>
       </div>
     );
