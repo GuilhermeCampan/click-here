@@ -20,7 +20,4 @@ html, body {
   font-size: 16px;
   text-align: center;
   background: var(--bg-color-main);
-  /* background: white;
-  background: radial-gradient(circle, #fff 20%, black);
-  background-size: cover; */
 }

@@ -11,6 +11,7 @@ import {
   DontClickStage,
   MultipleClickStage,
   MobileBackgroundStage,
+  CatchStage,
   EndGame
 } from '../src/stages/stagesList';
 import './stories.css';
@@ -55,6 +56,9 @@ storiesOf('Stages', module)
   ))
   .add('MobileBackgroundStage', () => (
     <FakeContainer> <MobileBackgroundStage {...stageControlsActions}/> </FakeContainer>
+  ))
+  .add('CatchStage', () => (
+    <FakeContainer> <CatchStage {...stageControlsActions}/> </FakeContainer>
   ))
   .add('EndGame', () => (
     <FakeContainer> <EndGame {...stageControlsActions}/> </FakeContainer>

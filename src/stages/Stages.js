@@ -8,6 +8,7 @@ import {
   DontClickStage,
   MultipleClickStage,
   MobileBackgroundStage,
+  CatchStage,
   EndGame
 } from './stagesList';
 import './Stages.css';
@@ -41,6 +42,7 @@ export default class Stages extends React.Component {
     <DontClickStage key="stage4" {...this.stageControls} />,
     <MultipleClickStage key="stage5" {...this.stageControls} />,
     <MobileBackgroundStage key="stage6" {...this.stageControls} />,
+    <CatchStage key="stage7" {...this.stageControls} />,
     <EndGame key="endGame" {...this.stageControls} />
   ];
 
