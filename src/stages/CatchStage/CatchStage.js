@@ -7,6 +7,7 @@ import {
 } from '../../common';
 import './CatchStage.css';
 
+// @TODO refactor this component using canvas
 class CatchStage extends React.Component {
   constructor(props) {
     super(props);
@@ -45,8 +46,8 @@ class CatchStage extends React.Component {
 
   stopCoinAnimation() {
     const stick = this.getCoin();
-    const stickXY= Collision.getComputedTranslateXY(stick);
-    stick.style.top = stickXY[1] + 'px';
+    const [,computedY]= Collision.getComputedTranslateXY(stick);
+    stick.style.top = computedY + 'px';
     stick.style.animation = 'none';
   }
 
@@ -65,7 +66,7 @@ class CatchStage extends React.Component {
     if (this.state.overlaping) {
       this.setState({caughtCoin: true});
       this.stopCoinAnimation();
-      setTimeout(()=>this.props.nextStage(),1000);
+      setTimeout(()=>this.props.nextStage(), 1000);
     } else {
       setTimeout(() => this.openHand(), 1000);
     }
@@ -77,7 +78,7 @@ class CatchStage extends React.Component {
       : 'catch-stage__game__coin catch-stage__game__coin--caught';
   }
 
-  gethandClass() {
+  getHandClass() {
     return !this.state.handClosed
       ? 'catch-stage__game__hand'
       : 'catch-stage__game__hand catch-stage__game__hand--closed';
@@ -95,7 +96,7 @@ class CatchStage extends React.Component {
       <div className='catch-stage'>
         <div className='catch-stage__game'>
           <div className={this.getCoinClass()}/>
-          <div className={this.gethandClass()}/>
+          <div className={this.getHandClass()}/>
         </div>
         <div className='catch-stage__game-controls'>
           <ClickHere {...this.getButtonProps()}/>

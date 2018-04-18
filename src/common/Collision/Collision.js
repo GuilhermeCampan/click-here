@@ -1,11 +1,14 @@
+/* istanbul ignore next */
 export const getElement = (selector) => {
   return document.body.querySelector(selector);
 };
 
+/* istanbul ignore next */
 export const getPosition = (element) => {
   return element.getBoundingClientRect();
 };
 
+/* istanbul ignore next */
 export const getComputedTranslateXY = (obj) => {
 	const transArr = [];
     if (!window.getComputedStyle) {
