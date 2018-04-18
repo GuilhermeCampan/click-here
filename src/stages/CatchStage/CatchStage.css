@@ -1,0 +1,58 @@
+.catch-stage {
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+.catch-stage__game {
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+  display: block;
+  width: 400px;
+  height: 300px;
+  position: relative;
+}
+
+.catch-stage__game__coin {
+  top: -64px;
+  left: 40%;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  animation: falling-stick 1s 3s normal infinite ease-in;
+  background: url(../../assets/catch-stage-sprite.png) 0 0;
+}
+
+.catch-stage__game__coin--caught {
+  opacity: 0;
+}
+
+.catch-stage__game__hand {
+  left: 40%;
+  bottom: 10px;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background: url(../../assets/catch-stage-sprite.png) 64px 0;
+}
+
+.catch-stage__game__hand--closed{
+  background: url(../../assets/catch-stage-sprite.png) 0 64px;
+}
+
+.catch-stage__game-controls {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+@keyframes falling-stick{
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(400px);
+  }
+}
