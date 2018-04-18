@@ -39,7 +39,7 @@ class CatchStage extends React.Component {
 
   setSprite() {
     const image = new Image();
-    image.src = require('../../assets/catch-stage-sprite.png');;
+    image.src = require('../../assets/catch-stage-sprite.png');
     image.onload = () => {
       this.sprite = image;
     };
@@ -47,13 +47,12 @@ class CatchStage extends React.Component {
 
   updateCanvas = (dT) => {
     if (!this.canvas || !this.sprite) {
-      console.log('loading...');
       return;
     }
     this.cleanCanvas();
     this.updateCoinPosition(dT);
-    this.drawCoin();
     this.drawHand();
+    this.drawCoin();
     this.handleCoinCollision();
   }
 
