@@ -21,6 +21,10 @@
   height: 100px;
 }
 
+.catch-stage_preload-image {
+  display: block;
+}
+
 /* 
 .catch-stage__game__coin {
   top: -64px;
