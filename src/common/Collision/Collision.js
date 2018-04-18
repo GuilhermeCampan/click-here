@@ -22,8 +22,8 @@ export const getComputedTranslateXY = (obj) => {
 
     if (matrix) return parseFloat(matrix[1].split(', ')[13]);
     matrix = transform.match(/^matrix\((.+)\)$/);
-    matrix ? transArr.push(parseFloat(matrix[1].split(', ')[4])) : 0;
-    matrix ? transArr.push(parseFloat(matrix[1].split(', ')[5])) : 0;
+    transArr.push(parseFloat(matrix[1].split(', ')[4]));
+    transArr.push(parseFloat(matrix[1].split(', ')[5]));
     return transArr;
 };
 
