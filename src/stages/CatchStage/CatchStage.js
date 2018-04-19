@@ -134,8 +134,7 @@ class CatchStage extends React.Component {
   render() {
     return (
       <div className='catch-stage'>
-        <canvas className='catch-stage__canvas'>
-        </canvas>
+        <canvas className='catch-stage__canvas' />
         <div className='catch-stage__game-controls'>
           <ClickHere {...this.getButtonProps()}/>
         </div>
