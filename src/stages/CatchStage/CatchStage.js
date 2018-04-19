@@ -7,48 +7,101 @@ import {
 } from '../../common';
 import './CatchStage.css';
 
-// @TODO refactor this component using canvas
 class CatchStage extends React.Component {
   constructor(props) {
     super(props);
-    this.tick = null;
     this.state = {
-      overlaping: false,
+      coinOverlaping: false,
       handClosed: false,
       caughtCoin: false
     };
+    this.tick = null;
+    this.sprite = null;
+    this.canvas = null;
+    this.frame = {x: 0, y: 0, width: 400, height: 300};
+    this.coin = {x: 130, y: -64, width: 64, height: 64, speed: 10, dT: 0 };
+    this.hand = {x: 130, y: 80, width: 64, height: 64};
   }
 
   componentDidMount() {
-    this.tick = new Tick(this.setOverlaping);
-    this.tick.start();
+    this.setCanvas();
+    this.setSprite();
+    this.startTick();
   }
 
   componentWillUnmount() {
     this.tick.stop();
   }
 
-  setOverlaping = () => {
-    const stickPositon = Collision.getPosition(this.getCoin());
-    const handPosition = Collision.getPosition(this.getHand());
-    this.setState({
-      overlaping: Collision.collisonDetect(stickPositon, handPosition)
-    });
-  };
-
-  getCoin() {
-    return Collision.getElement('.catch-stage__game__coin');
+  setCanvas() {
+    this.canvas = document.querySelector('canvas').getContext('2d');
   }
 
-  getHand() {
-    return Collision.getElement('.catch-stage__game__hand');
+  setSprite() {
+    const image = new Image();
+    image.src = require('../../assets/catch-stage-sprite.png');
+    image.onload = () => {
+      this.sprite = image;
+    };
   }
 
-  stopCoinAnimation() {
-    const stick = this.getCoin();
-    const [,computedY]= Collision.getComputedTranslateXY(stick);
-    stick.style.top = computedY + 'px';
-    stick.style.animation = 'none';
+  updateCanvas = (dT) => {
+    if (!this.canvas || !this.sprite) {
+      return;
+    }
+    this.cleanCanvas();
+    this.updateCoinPosition(dT);
+    this.drawHand();
+    this.drawCoin();
+    this.handleCoinCollision();
+  }
+
+  startTick() {
+    this.tick = new Tick(this.updateCanvas);
+    this.tick.start();
+  }
+
+  cleanCanvas() {
+    this.canvas.clearRect(0, 0, this.frame.width, this.frame.height);
+  }
+
+  updateCoinPosition(dT) {
+    if (this.coin.y > this.frame.height  || this.state.caughtCoin) {
+      this.coin.y = -64;
+      this.coin.dT = 0;
+      return;
+    }
+    this.coin.dT += dT;
+    const dY = this.coin.speed * this.coin.dT;
+    this.coin.y += dY;
+  }
+
+  drawCoin() {
+    this.canvas.drawImage(
+      this.sprite,
+      0, 0,
+      64, 64,
+      this.coin.x, this.coin.y,
+      this.coin.width, this.coin.height
+    );
+  }
+
+  drawHand() {
+    const handSprite = this.state.handClosed ? [0, 64] : [64, 0];
+    this.canvas.drawImage(
+      this.sprite,
+      ...handSprite,
+      64, 64,
+      this.hand.x, this.hand.y,
+      this.hand.width, this.hand.height
+    );
+  }
+
+  handleCoinCollision() {
+    const collided = Collision.collisonDetect(this.coin, this.hand);
+    if (this.state.coinCollided !== collided){
+      this.setState({coinCollided: collided});
+    }
   }
 
   handleClick = () => {
@@ -57,31 +110,18 @@ class CatchStage extends React.Component {
     }
   }
 
-  openHand = () => {
-    this.setState({handClosed: false});
-  }
-
   closeHand = () => {
     this.setState({handClosed: true});
-    if (this.state.overlaping) {
+    if (this.state.coinCollided) {
       this.setState({caughtCoin: true});
-      this.stopCoinAnimation();
       setTimeout(()=>this.props.nextStage(), 1000);
     } else {
       setTimeout(() => this.openHand(), 1000);
     }
   }
 
-  getCoinClass() {
-    return !this.state.caughtCoin
-      ? 'catch-stage__game__coin'
-      : 'catch-stage__game__coin catch-stage__game__coin--caught';
-  }
-
-  getHandClass() {
-    return !this.state.handClosed
-      ? 'catch-stage__game__hand'
-      : 'catch-stage__game__hand catch-stage__game__hand--closed';
+  openHand = () => {
+    this.setState({handClosed: false});
   }
 
   getButtonProps() {
@@ -94,10 +134,7 @@ class CatchStage extends React.Component {
   render() {
     return (
       <div className='catch-stage'>
-        <div className='catch-stage__game'>
-          <div className={this.getCoinClass()}/>
-          <div className={this.getHandClass()}/>
-        </div>
+        <canvas className='catch-stage__canvas' />
         <div className='catch-stage__game-controls'>
           <ClickHere {...this.getButtonProps()}/>
         </div>

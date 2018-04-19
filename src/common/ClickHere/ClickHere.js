@@ -9,7 +9,9 @@ const getClassModifer = (modifer) => {
 
 const getClasses = (classModifiers) => {
   let classes = ['click-here-button'];
-  !!classModifiers.disabled && classes.push(getClassModifer('disabled'));
+  if (classModifiers.disabled) {
+    classes.push(getClassModifer('disabled'));
+  }
   return classes.join(' ');
 };
 

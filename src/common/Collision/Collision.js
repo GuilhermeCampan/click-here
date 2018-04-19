@@ -1,9 +1,4 @@
 /* istanbul ignore next */
-export const getElement = (selector) => {
-  return document.body.querySelector(selector);
-};
-
-/* istanbul ignore next */
 export const getPosition = (element) => {
   return element.getBoundingClientRect();
 };

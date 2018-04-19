@@ -20,6 +20,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
@@ -38,8 +39,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha -r jsdom-global/register -r babel-core/register -r ignore-styles -r babel-polyfill -r babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
-    "test:watch": "mocha -w -r jsdom-global/register -r babel-core/register -r ignore-styles -r babel-polyfill -r babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
+    "test": "mocha -r babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
+    "test:watch": "mocha -w -r babel-register --reporter spec setupTests.js \"src/**/*.spec.js\"",
     "coverage": "nyc --reporter=html --reporter=text --reporter=lcov npm test",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "lint": "esw src --color",
