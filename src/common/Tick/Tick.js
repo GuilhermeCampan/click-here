@@ -23,7 +23,9 @@ export default class Tick {
         this.timer = 0;
         this.handleTick(dt);
       }
-      this.running && window.requestAnimationFrame(loop);
+      if (this.running) {
+        window.requestAnimationFrame(loop);
+      }
     };
     loop();
   }
